@@ -25,9 +25,9 @@ app.get('/todos', (req, res) => {
 // Get all todos
 app.post('/todos', (req, res) => {
   const newTodo = {
-    id: Date.now().toString(),
     isDone: false,
-    ...req.body
+    ...req.body,
+    id: Date.now().toString(),
   };
   todos.push(newTodo);
   res.status(201).json(newTodo);
@@ -35,7 +35,7 @@ app.post('/todos', (req, res) => {
 
 // Update a todo
 app.put('/todos/:id', (req, res) => {
-  const id = req.params.id;
+  const id = req.params.id.toString();
   const todoIndex = todos.findIndex(todo => todo.id === id);
   
   if (todoIndex === -1) {
