@@ -12,9 +12,29 @@ app.use(express.json());
 let todos = [
   {
     id: Date.now().toString(),
-    title: "Exemple de todo",
+    title: "Todo 1",
     isDone: false
-  }
+  },
+  {
+    id: Date.now().toString(),
+    title: "Todo 2",
+    isDone: true
+  },
+  {
+    id: Date.now().toString(),
+    title: "Todo 3",
+    isDone: false
+  },
+  {
+    id: Date.now().toString(),
+    title: "Todo 4",
+    isDone: true
+  },
+  {
+    id: Date.now().toString(),
+    title: "Todo 5",
+    isDone: false
+  },
 ];
 
 // Get all todos
@@ -45,7 +65,7 @@ app.put('/todos/:id', (req, res) => {
   const updatedTodo = {
     ...todos[todoIndex],
     ...req.body,
-    id // Ensure id remains unchanged
+    id
   };
 
   todos[todoIndex] = updatedTodo;
