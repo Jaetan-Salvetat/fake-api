@@ -11,7 +11,7 @@ app.use(express.json());
 // In-memory todos storage
 let todos = [
   {
-    id: 1,
+    id: Date.now().toString(),
     title: "Exemple de todo",
     isDone: false
   }
@@ -25,7 +25,7 @@ app.get('/todos', (req, res) => {
 // Get all todos
 app.post('/todos', (req, res) => {
   const newTodo = {
-    id: Date.now(),
+    id: Date.now().toString(),
     isDone: false,
     ...req.body
   };
@@ -54,7 +54,7 @@ app.put('/todos/:id', (req, res) => {
 
 // Delete a todo
 app.delete('/todos/:id', (req, res) => {
-  const id = parseInt(req.params.id);
+  const id = req.params.id;
   const todoIndex = todos.findIndex(todo => todo.id === id);
   
   if (todoIndex === -1) {
