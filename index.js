@@ -22,6 +22,17 @@ app.get('/todos', (req, res) => {
   res.json(todos);
 });
 
+// Get all todos
+app.post('/todos', (req, res) => {
+  const newTodo = {
+    id: Date.now(),
+    isDone: false,
+    ...req.body
+  };
+  todos.push(newTodo);
+  res.status(201).json(newTodo);
+});
+
 // Update a todo
 app.put('/todos/:id', (req, res) => {
   const id = parseInt(req.params.id);
