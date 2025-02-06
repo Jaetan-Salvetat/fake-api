@@ -35,7 +35,7 @@ app.post('/todos', (req, res) => {
 
 // Update a todo
 app.put('/todos/:id', (req, res) => {
-  const id = parseInt(req.params.id);
+  const id = req.params.id;
   const todoIndex = todos.findIndex(todo => todo.id === id);
   
   if (todoIndex === -1) {
